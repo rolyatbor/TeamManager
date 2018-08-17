@@ -1,0 +1,13 @@
+h3{
+    display: inline-block;
+}
+
+.btn{
+    margin-left: 20px;
+}
+
+.bigbox{
+    border: 2px solid black;
+    height: 500px;
+    width: 800px;
+}
