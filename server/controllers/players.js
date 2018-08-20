@@ -13,12 +13,29 @@ module.exports = {
         })
     },
     create: (req, res)=>{
-        Player.create(req.body, err=>{
+        var player = new Player({name: req.body.name, position: req.body.position,
+            status: {game1: 'undecided', game2: 'undecided', game3: 'undecided'}
+        })
+        player.save(req.body, err=>{
             if(err){
                 res.json(err);
             } else {
                 res.json({message: "Success"})
             }
+        })
+    },
+    delete: (req, res)=>{
+        Player.remove({_id: req.params.id}, (err, type)=>{
+            if(err){
+                res.json(err);
+            }
+            res.json(type)
+        })
+    },
+    updateOne: (req, res)=>{
+        console.log(req.body)
+        Player.update({_id: req.params.id}, req.body, (err, player) =>{
+            res.json(player)
         })
     }
 }

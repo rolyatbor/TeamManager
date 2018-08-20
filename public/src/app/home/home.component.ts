@@ -14,8 +14,6 @@ export class HomeComponent implements OnInit {
     private _router: Router) { }
 
   ngOnInit() {
+      this._router.navigate(['/players/list'])
   }
-
-  
-
 }

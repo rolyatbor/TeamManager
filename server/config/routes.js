@@ -3,6 +3,8 @@ Player = mongoose.model('Player'),
 players = require('../controllers/players.js')
 
 module.exports = app =>{
-    app.get('/players', players.showAll);
-    app.post('/players', players.create);
+    app.get('/playersAll', players.showAll);
+    app.post('/playersAdd', players.create);
+    app.delete('/players/:id', players.delete);
+    app.put('/player/:id', players.updateOne);
 }

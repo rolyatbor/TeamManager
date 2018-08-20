@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-player.component.css']
 })
 export class AddPlayerComponent implements OnInit {
-    @Output() addToList = new EventEmitter();
+    @Output() updateList = new EventEmitter();
     newPlayer: any;
     error: "";
     players
@@ -22,13 +22,13 @@ export class AddPlayerComponent implements OnInit {
   }
 
   addPlayer(){
-      this.addToList.emit();
       let obs = this._httpService.addPlayer(this.newPlayer);
       obs.subscribe(data=>{
           if(data['messages']){
               this.error = data['messages']
           } else {
               this.newPlayer = {name: "", position: ""};
+              this.updateList.emit();
               this._router.navigate(['/players/list'])
           }
       })

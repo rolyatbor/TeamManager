@@ -1,0 +1,23 @@
+button{
+    margin-left: 150px;
+    width: 102px;
+    height: 38px;
+    border-radius: 7px;
+}
+
+.selected.playing{
+    color: white;
+    background-color: green;
+}
+
+.selected.notPlaying{
+    color: white;
+    background-color: red;
+}
+
+.selected.undecided{
+    background-color: yellow;
+}
+.btn-link{
+    margin-left: 0;
+}

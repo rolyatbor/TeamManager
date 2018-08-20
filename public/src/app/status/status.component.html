@@ -1,0 +1,33 @@
+<div class="container border border-dark">
+    <div class="row">
+        <h1 class="col-sm">Player Status - Game {{num}}</h1>
+    </div>
+    <div class="row">
+        <h3 class="col sm text-center">
+            <button class="btn btn-link" (click)='newGame(1)'>Game 1</button> |
+            <button class="btn btn-link" (click)='newGame(2)'>Game 2</button> |
+            <button class="btn btn-link" (click)='newGame(3)'>Game 3</button>
+        </h3>
+    </div>
+    <div class="container border border-dark">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col" class="text-center">Game {{num}} Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let each of players">
+                    <td>{{each.name}}</td>
+                    <td>
+                        <button (click)="updateStatus(game, 'playing', each)" class="playing" [ngClass]="{ 'selected': each.status[game]==='playing'}">Playing</button>
+                        <button (click)="updateStatus(game, 'not playing', each)" class="notPlaying" [ngClass]="{ 'selected': each.status[game]==='not playing'}">Not Playing</button>
+                        <button (click)="updateStatus(game, 'undecided', each)" class="undecided" type="button" [ngClass]="{ 'selected': each.status[game]=='undecided'}">Undecided</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</div>

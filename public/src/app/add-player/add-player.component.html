@@ -10,17 +10,19 @@
             <form>
                 <div class="modal-body">
                     <div class="form-group">
+                        <p *ngIf='name.errors'>*Name requires at least 2 characters</p>
                         <label for="newPlayer.name" class="col-form-label">Name:</label>
-                        <input type="text" class="form-control" [(ngModel)]="newPlayer.name" name="name">
+                        <input type="text" required minlength="2" class="form-control" [(ngModel)]="newPlayer.name" name="name" #name='ngModel'>
                     </div>
                     <div class="form-group">
+                        <p *ngIf='position.errors'>*Position is required</p>
                         <label for="position" class="col-form-label">Position:</label>
-                        <input class="form-control" [(ngModel)]="newPlayer.position" name="position">
+                        <input class="form-control" required [(ngModel)]="newPlayer.position" name="position" #position='ngModel'>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeBox()">Close</button>
-                    <button type="submit" data-dismiss="modal" class="btn btn-primary" (click)="addPlayer()">Save Player</button>
+                    <button type="submit" data-dismiss="modal" [disabled]='name.errors || position.errors' class="btn btn-primary" (click)="addPlayer()">Save Player</button>
                 </div>
             </form>
         </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-players.component.css']
 })
 export class ListPlayersComponent implements OnInit {
+    @Output() updateList = new EventEmitter();
     error: "";
     players
     constructor(
@@ -28,4 +29,11 @@ export class ListPlayersComponent implements OnInit {
     invoke(){
         this.getPlayers();
     }
+    
+
+  deletePlayer(id){
+    let obs = this._httpService.deletePlayer(id);
+    obs.subscribe(data =>{})
+    this.getPlayers();
+  }
 }
